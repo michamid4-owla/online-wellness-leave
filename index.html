@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <title>Online Wellness Leave Application</title>
+
+  <!-- Google Font -->
+  <link rel="preconnect"
+        href="https://fonts.googleapis.com">
+
+  <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+  <!-- Your GitHub CSS -->
+  <link rel="stylesheet"
+        href="styles.css">
+
+</head>
+
+<body>
+
+<!-- ==================================================
+     HEADER
+================================================== -->
+
+<header class="app-header">
+
+  <img
+    class="logo"
+    src="https://drive.google.com/thumbnail?id=1x0t6Fcu4s8RmrzaGj__axftuhhLcYORs&sz=w1000"
+    alt="DepEd Logo">
+
+  <div class="header-text">
+
+    <h3>Republic of the Philippines</h3>
+
+    <h2>Department of Education</h2>
+
+    <h1>Schools Division of Eastern Samar</h1>
+
+    <h2>Online Wellness Leave Application</h2>
+
+    <p>Calendar Year 2026</p>
+
+  </div>
+
+</header>
+
+
+<!-- ==================================================
+     EMPLOYEE VERIFICATION
+================================================== -->
+
+<div class="card employee-verification-card">
+
+  <h2 class="card-title">
+    Employee Verification
+  </h2>
+
+  <div class="form-group">
+
+    <label for="employeeID">
+
+      Employee Number
+      <span class="required">*</span>
+
+    </label>
+
+    <input
+      type="text"
+      id="employeeID"
+      class="form-control"
+      placeholder="Enter Employee Number"
+      autocomplete="off"
+      spellcheck="false"
+      inputmode="numeric"
+      onblur="verifyEmployee()"
+      required>
+
+    <small id="employeeStatus"></small>
+
+  </div>
+
+
+  <div class="form-group">
+
+    <label for="employeeName">
+      Employee Name
+    </label>
+
+    <input
+      type="text"
+      id="employeeName"
+      class="form-control"
+      readonly
+      placeholder="Employee name will appear after verification">
+
+  </div>
+
+</div>
+
+
+<!-- ==================================================
+     COMPLETE APPLICATION
+================================================== -->
+
+<div id="applicationForm"
+     class="application-locked">
+
+
+  <!-- ==================================================
+       OFFICE INFORMATION
+  ================================================== -->
+
+  <div class="card">
+
+    <h2 class="card-title">
+      Office Information
+    </h2>
+
+
+    <div class="form-row">
+
+      <div class="form-group">
+
+        <label for="office">
+
+          Office
+          <span class="required">*</span>
+
+        </label>
+
+        <select
+          id="office"
+          onchange="officeChanged()">
+
+          <option value="">
+            Select Office
+          </option>
+
+          <option value="Division Office">
+            Division Office
+          </option>
+
+          <option value="Field Office">
+            Field Office
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <div
+        class="form-group"
+        id="districtGroup"
+        style="display:none;">
+
+        <label for="district">
+
+          District
+          <span class="required">*</span>
+
+        </label>
+
+        <select
+          id="district"
+          onchange="loadSchools()">
+
+          <option value="">
+            Select District
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <div
+        class="form-group"
+        id="schoolGroup"
+        style="display:none;">
+
+        <label for="school">
+
+          School
+          <span class="required">*</span>
+
+        </label>
+
+        <select id="school">
+
+          <option value="">
+            Select School
+          </option>
+
+        </select>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- ==================================================
+       EMPLOYMENT DETAILS
+  ================================================== -->
+
+  <div
+    class="card"
+    id="employmentGroup">
+
+    <h2 class="card-title">
+      Employment Details
+    </h2>
+
+
+    <div class="form-row">
+
+      <div class="form-group">
+
+        <label for="employeeType">
+
+          Type of Employee
+          <span class="required">*</span>
+
+        </label>
+
+        <select
+          id="employeeType"
+          onchange="employeeTypeChanged()">
+
+          <option value="">
+            Select Type
+          </option>
+
+          <option>
+            Teaching Personnel
+          </option>
+
+          <option>
+            Teaching-Related Personnel
+          </option>
+
+          <option>
+            Non-Teaching Personnel
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label for="position">
+
+          Position / Designation
+          <span class="required">*</span>
+
+        </label>
+
+        <select id="position">
+
+          <option value="">
+            Select Position
+          </option>
+
+        </select>
+
+      </div>
+
+    </div>
+
+
+    <div
+      id="relieverGroup"
+      style="display:none;">
+
+      <div class="form-row">
+
+        <div class="form-group">
+
+          <label for="relieverName">
+
+            Name of Reliever
+            <span class="required">*</span>
+
+          </label>
+
+          <input
+            id="relieverName"
+            placeholder="Enter name of reliever">
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label for="relieverPosition">
+
+            Designation of Reliever - PPT or MPT
+            <span class="required">*</span>
+
+          </label>
+
+          <input
+            id="relieverPosition"
+            placeholder="Enter designation">
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- ==================================================
+       LEAVE DETAILS
+  ================================================== -->
+
+  <div class="card">
+
+    <h2 class="card-title">
+      Leave Details
+    </h2>
+
+
+    <div class="form-row">
+
+      <div class="form-group">
+
+        <label for="dateFiled">
+          Date Filed
+        </label>
+
+        <input
+          type="date"
+          id="dateFiled">
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label for="dateFrom">
+
+          Inclusive Date - From -
+          <span class="required">*</span>
+
+        </label>
+
+        <input
+          type="date"
+          id="dateFrom"
+          onchange="computeWorkingDays()">
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label for="dateTo">
+
+          Inclusive Date - To -
+          <span class="required">*</span>
+
+        </label>
+
+        <input
+          type="date"
+          id="dateTo"
+          onchange="computeWorkingDays()">
+
+      </div>
+
+    </div>
+
+
+    <div class="form-row">
+
+      <div class="form-group">
+
+        <label for="workingDays">
+          No. of Working Days Applied for
+        </label>
+
+        <input
+          type="number"
+          id="workingDays"
+          readonly>
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label for="creditsUsed">
+          Credits Used
+        </label>
+
+        <input
+          type="number"
+          id="creditsUsed"
+          readonly>
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label for="balance">
+          Current Balance
+        </label>
+
+        <input
+          type="number"
+          id="balance"
+          readonly>
+
+      </div>
+
+    </div>
+
+
+    <div class="form-group">
+
+      <label for="reason">
+
+        Reason for Wellness Leave
+        <span class="required">*</span>
+
+      </label>
+
+      <select
+        id="reason"
+        onchange="reasonChanged()">
+
+        <option value="">
+          Select Reason
+        </option>
+
+        <option value="Mental Health Care">
+          Mental Health Care
+        </option>
+
+        <option value="General Break from Work">
+          General Break from Work
+        </option>
+
+        <option value="Physical Wellness Activities">
+          Physical Wellness Activities
+        </option>
+
+        <option value="Emergency Leave">
+          Emergency Leave
+        </option>
+
+        <option value="Others">
+          Others
+        </option>
+
+      </select>
+
+    </div>
+
+
+    <div
+      id="otherReasonGroup"
+      style="display:none;">
+
+      <div class="form-group">
+
+        <label for="otherReason">
+          Please specify
+        </label>
+
+        <textarea
+          id="otherReason"
+          rows="3"
+          placeholder="Please specify your reason"></textarea>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- ==================================================
+       SUBMIT
+  ================================================== -->
+
+  <div class="submit-section">
+
+    <button
+      id="submitBtn"
+      class="submit-btn"
+      type="button"
+      onclick="submitApplication()">
+
+      Submit Application
+
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- ==================================================
+     FOOTER
+================================================== -->
+
+<footer class="app-footer">
+
+  <div class="footer-title">
+    Online Wellness Leave Application System
+  </div>
+
+  <div>
+    © 2026 Department of Education –
+    Schools Division of Eastern Samar
+  </div>
+
+</footer>
+
+
+<!-- ==================================================
+     SWEET ALERT
+================================================== -->
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<!-- Your GitHub JavaScript -->
+<script src="script.js"></script>
+
+</body>
+
+</html>
