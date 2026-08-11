@@ -1137,6 +1137,7 @@ else {
   enableSubmitButton();
 
 }
+}
 
   //==============================================
   // CONNECTION ERROR
