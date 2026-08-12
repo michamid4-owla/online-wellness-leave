@@ -63,31 +63,43 @@ body {
     text-align: left;
 }
 
+/* Republic of the Philippines */
 .header-text h3 {
     font-size: 15px;
     color: #666;
     font-weight: 500;
-    margin-bottom: 2px;
+
+    margin: 0;
+    line-height: 1.1;
 }
 
+/* Department of Education */
 .header-text h2 {
     font-size: 18px;
     color: #0B5ED7;
     font-weight: 600;
-    margin-bottom: 4px;
+
+    margin: 2px 0 0;
+    line-height: 1.1;
 }
 
+/* Schools Division */
 .header-text h1 {
     font-size: 34px;
     color: #003f91;
     font-weight: 700;
-    margin-bottom: 6px;
+
+    margin: 2px 0 0;
+    line-height: 1.05;
 }
 
+/* Online Wellness Leave Application / Calendar Year */
 .header-text p {
     font-size: 15px;
     color: #777;
-    margin-top: 4px;
+
+    margin: 3px 0 0;
+    line-height: 1.1;
 }
 
 
@@ -548,7 +560,7 @@ textarea {
     .app-header {
         margin: 0 auto 15px;
 
-        padding: 14px 12px;
+        padding: 12px 10px;
 
         border-radius: 14px;
 
@@ -558,7 +570,6 @@ textarea {
     .logo {
         width: 58px;
         height: 58px;
-        margin-bottom: 3px;
     }
 
     .header-text {
@@ -568,26 +579,26 @@ textarea {
 
     .header-text h3 {
         font-size: 10px;
-        line-height: 1.25;
-        margin-bottom: 1px;
+        line-height: 1.05;
+        margin-bottom: 0px;
     }
 
     .header-text h2 {
         font-size: 13px;
-        line-height: 1.3;
-        margin-bottom: 2px;
+        line-height: 1.05;
+        margin: 1px 0 0;
     }
 
     .header-text h1 {
         font-size: 19px;
-        line-height: 1.25;
-        margin-bottom: 2px;
+       line-height: 1.05;
+        margin: 1px 0 0;
     }
 
     .header-text p {
         font-size: 11px;
-        line-height: 1.3;
-        margin-top: 2px;
+        line-height: 1.05;
+        margin: 2px 0 0;
     }
 
 
